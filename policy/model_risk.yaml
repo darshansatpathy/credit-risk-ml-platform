@@ -1,0 +1,25 @@
+# Model-risk policy: how decisions are made from a model, and what a model must show before it
+# can be the champion. Every threshold is checked by `crisk evaluate --check`.
+
+decision:
+  # The cutoff is set on the validation split so that this share of applicants is approved.
+  approval_rate: 0.80
+
+thresholds:
+  auc_min: 0.75              # discrimination on the test split
+  ks_min: 0.38
+  ece_max: 0.03              # calibration on the test split
+  overfit_auc_gap_max: 0.05  # train AUC minus test AUC
+  leakage_auc_max: 0.95      # higher than this on credit data means something leaked
+  score_psi_max: 0.10        # train vs test stability of the score
+  adverse_impact_min: 0.80   # lowest group approval rate / highest, for gated attributes
+  reason_coverage_min: 1.0   # share of declines with at least one reason code
+
+fairness:
+  gated: [sex, age_band]     # attributes the adverse impact threshold applies to
+  reported: [sex, age_band, education, marriage]
+  min_group_size: 200
+
+monitoring:
+  psi_warn: 0.10
+  psi_alert: 0.25
