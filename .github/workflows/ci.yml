@@ -46,7 +46,7 @@ jobs:
       - run: pip install -e ".[dev]"
       - name: Train, evaluate against the policy, choose a champion
         run: crisk train --out artifacts --tracking-uri sqlite:///artifacts/mlflow.db --report model-report.md --check
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: model-risk
@@ -69,7 +69,7 @@ jobs:
           python -m venv /tmp/venv
           /tmp/venv/bin/pip install dist/*.whl
           cd /tmp && /tmp/venv/bin/crisk train --out /tmp/out --check
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
