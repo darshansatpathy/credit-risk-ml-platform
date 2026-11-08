@@ -31,7 +31,7 @@ def frame(app: Application) -> pd.DataFrame:
 
 def create_app(model_dir: Path, cutoff: float) -> FastAPI:
     model = models.load(model_dir)
-    app = FastAPI(title="Credit risk scoring", version="0.1.0")
+    app = FastAPI(title="Credit risk scoring", version="0.1.1")
 
     @app.get("/healthz")
     def healthz() -> dict[str, str]:

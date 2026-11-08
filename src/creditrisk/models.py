@@ -236,7 +236,7 @@ class Scorecard(RiskModel):
 
     def raw(self, X: pd.DataFrame) -> np.ndarray:
         # Log-odds of default. WoE is defined as ln(good share / bad share), so it enters negatively.
-        return self.intercept - self._woe(X) @ np.asarray(self.coefficients)
+        return np.asarray(self.intercept - self._woe(X) @ np.asarray(self.coefficients), dtype=float)
 
     def contributions(self, X: pd.DataFrame) -> np.ndarray:
         """Points below the best attainable for each characteristic: a scorecard's reason codes."""

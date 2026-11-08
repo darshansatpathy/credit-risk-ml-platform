@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "credit-risk-ml-platform"
-version = "0.1.0"
+version = "0.1.1"
 description = "Credit risk models (scorecard, LightGBM, XGBoost) with monotone constraints, calibration, reason codes, fairness testing, stability monitoring, MLflow and a generated model validation report."
 readme = "README.md"
 license = { text = "MIT" }
